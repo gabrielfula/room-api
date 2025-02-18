@@ -42,4 +42,5 @@ model Task {
 enum EStatus {
   COMPLETED
   PENDING
+  DELETED
 }

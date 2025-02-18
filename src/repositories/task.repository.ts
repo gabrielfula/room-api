@@ -1,4 +1,4 @@
-import { Task } from "@prisma/client";
+import { EStatus, Task } from "@prisma/client";
 import prisma from "../configs/prisma";
 
 export class TaskRepository {
@@ -9,7 +9,13 @@ export class TaskRepository {
      };
 
      async list(): Promise<Task[]> {
-          return await this.prisma.task.findMany();
+          return await this.prisma.task.findMany({
+               where: {
+                    status: {
+                         not: EStatus.DELETED,
+                    },
+               }
+          });
      };
 
      async create(data: any): Promise<Task | any> {
@@ -22,6 +28,12 @@ export class TaskRepository {
           return await this.prisma.task.findFirst({
               where: { uuid },
           });
-      }
-      
+     }
+
+     async update(task: Task, data: any): Promise<Task | null> {
+          return await this.prisma.task.update({
+               where: task,
+               data
+          });
+     }
 }
