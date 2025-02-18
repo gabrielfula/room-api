@@ -9,8 +9,8 @@ export class FetchTaskService {
      };
 
 
-     async index(): Promise<Task[]> {
-          const tasks = await this.taskRepository.list();
+     async index(status?: string): Promise<Task[]> {
+          const tasks = await this.taskRepository.list(status);
 
           return tasks;
      };

@@ -21,7 +21,9 @@ export class TaskController {
 
      public index = async (req: Request, res: Response) => {
 
-          const tasks = await this.fetchTaskService.index();
+          const { status } = req.query;
+
+          const tasks = await this.fetchTaskService.index(status as string);
 
           res
           .status(200)

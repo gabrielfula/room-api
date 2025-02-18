@@ -8,15 +8,13 @@ export class TaskRepository {
           this.prisma = prisma;
      };
 
-     async list(): Promise<Task[]> {
+     async list(status?: string): Promise<Task[]> {
           return await this.prisma.task.findMany({
-               where: {
-                    status: {
-                         not: EStatus.DELETED,
-                    },
-               }
+              where: {
+                  status: status ? status as EStatus : { not: EStatus.DELETED },
+              },
           });
-     };
+      }      
 
      async create(data: any): Promise<Task | any> {
           return await this.prisma.task.create({
