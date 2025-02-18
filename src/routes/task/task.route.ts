@@ -1,10 +1,12 @@
 import express from 'express';
-import TaskController from "../../http/admin/controllers/task.controller";
+import { TaskController } from '../../http/controllers/task.controller';
 
 const router = express.Router();
 
-router.post('/create', TaskController.create);
-router.get('/', TaskController.index);
+const taskController = new TaskController();
+
+router.post('/create', taskController.create);
+router.get('/', taskController.index);
 
 
 export default router;
