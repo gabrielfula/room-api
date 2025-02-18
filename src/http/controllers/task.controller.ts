@@ -1,10 +1,10 @@
-import { NextFunction, Request, Response } from "express";
+import { Request, Response } from "express";
 import { FetchTaskService } from "../../services/task/fetch-task.service";
-import { TaskListResponse } from "../responses/task.response";
 import { CreateTaskService } from "../../services/task/create-task.service";
-import { TaskDetailResponse } from "../responses/task-detail.response";
 import { DeleteTaskService } from "../../services/task/delete-task.service";
 import { UpdateTaskService } from "../../services/task/update-task.service";
+import { TaskListResponse } from "../responses/task/task.response";
+import { TaskDetailResponse } from "../responses/task/task-detail.response";
 
 export class TaskController {
      private fetchTaskService;

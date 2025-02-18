@@ -1,4 +1,4 @@
-import { formatStatus } from "../../helpers/status";
+import { formatStatus } from "../../../helpers/status";
 
 export class TaskDetailResponse {
      static serialize(data: any) {
