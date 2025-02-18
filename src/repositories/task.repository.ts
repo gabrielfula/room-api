@@ -10,5 +10,11 @@ export class TaskRepository {
 
      async list(): Promise<Task[]> {
           return await this.prisma.task.findMany();
-     }
+     };
+
+     async create(data: any): Promise<Task | any> {
+          return await this.prisma.task.create({
+               data,
+          });
+     };
 }
