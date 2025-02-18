@@ -6,6 +6,7 @@ const router = express.Router();
 const taskController = new TaskController();
 
 router.post('/create', taskController.create);
+router.get('/details/:uuid', taskController.detail);
 router.get('/', taskController.index);
 
 

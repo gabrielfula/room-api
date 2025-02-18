@@ -35,6 +35,16 @@ export class TaskController {
           });
      };
 
+     public detail = async (req: Request, res: Response) => {
+
+          const task = await this.fetchTaskService.getByUuid(req.params.uuid);
+
+          res
+          .json({
+               data: TaskDetailResponse.serialize(task)
+          });
+     };
+
      public cancel = async (req: Request, res: Response) => {
           res.json({ "message": "Deletado com sucesso!" });
      };

@@ -14,4 +14,14 @@ export class FetchTaskService {
 
           return tasks;
      };
+
+     async getByUuid(uuid: string): Promise<Task> {
+          const tasks = await this.taskRepository.findByUuid(uuid);
+
+          if (!tasks) {
+               throw Error("Tarefa não foi encontrada");
+          };
+
+          return tasks;
+     };
 }

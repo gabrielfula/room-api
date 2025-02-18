@@ -17,4 +17,11 @@ export class TaskRepository {
                data,
           });
      };
+
+     async findByUuid(uuid: string): Promise<Task | null> {
+          return await this.prisma.task.findFirst({
+              where: { uuid },
+          });
+      }
+      
 }
