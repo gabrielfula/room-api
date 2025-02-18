@@ -4,16 +4,19 @@ import { TaskListResponse } from "../responses/task.response";
 import { CreateTaskService } from "../../services/task/create-task.service";
 import { TaskDetailResponse } from "../responses/task-detail.response";
 import { DeleteTaskService } from "../../services/task/delete-task.service";
+import { UpdateTaskService } from "../../services/task/update-task.service";
 
 export class TaskController {
      private fetchTaskService;
      private createTaskService;
      private deleteTaskService;
+     private updateTaskService;
 
      constructor() {
           this.fetchTaskService = new FetchTaskService();
           this.createTaskService = new CreateTaskService();
           this.deleteTaskService = new DeleteTaskService();
+          this.updateTaskService = new UpdateTaskService();
      }
 
      public index = async (req: Request, res: Response) => {
@@ -63,6 +66,14 @@ export class TaskController {
      };
 
      public edit = async (req: Request, res: Response) => {
-          res.json({ "message": "Atualizado com sucesso!" });
+
+          const task = await this.updateTaskService.edit(req.params.uuid, req.body);
+
+          res
+          .status(200)
+          .json({ 
+               "message": "Atualizado com sucesso!",
+               data: TaskDetailResponse.serialize(task),
+          });
      };
 }

@@ -9,6 +9,7 @@ router.post('/create', taskController.create);
 router.get('/details/:uuid', taskController.detail);
 router.get('/', taskController.index);
 router.delete('/:uuid', taskController.cancel);
+router.put('/edit/:uuid', taskController.edit);
 
 
 export default router;
