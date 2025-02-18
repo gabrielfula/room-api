@@ -1,3 +1,5 @@
+import { formatStatus } from "../../helpers/status";
+
 export class TaskListResponse {
      static serialize(data: any) {
           return data.map((item: any) => {
@@ -5,7 +7,7 @@ export class TaskListResponse {
                     uuid: item.uuid,
                     title: item.title,
                     description: item.description,
-                    status: item.status,
+                    status: formatStatus(item.status),
                };
           });
      }
